@@ -1,0 +1,20 @@
+{
+	"name": "OutputDatas",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Linked1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "original.csv",
+				"container": "datassalida"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
