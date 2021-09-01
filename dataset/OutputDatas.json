@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "original.csv",
+				"fileName": "original.parquet",
 				"container": "datassalida"
 			},
 			"compressionCodec": "snappy"
