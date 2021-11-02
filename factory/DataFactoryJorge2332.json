@@ -1,0 +1,9 @@
+{
+	"name": "DataFactoryJorge2332",
+	"location": "southcentralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "1f9f5df6-7606-464f-960f-1c19e8d70103",
+		"tenantId": "932d69f5-a800-4527-9dcf-eabfe5c25af4"
+	}
+}

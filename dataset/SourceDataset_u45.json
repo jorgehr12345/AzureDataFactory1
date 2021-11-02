@@ -1,0 +1,101 @@
+{
+	"name": "SourceDataset_u45",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "original.csv",
+				"container": "datas"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "price",
+				"type": "String"
+			},
+			{
+				"name": "resid_area",
+				"type": "String"
+			},
+			{
+				"name": "air_qual",
+				"type": "String"
+			},
+			{
+				"name": "room_num",
+				"type": "String"
+			},
+			{
+				"name": "age",
+				"type": "String"
+			},
+			{
+				"name": "dist1",
+				"type": "String"
+			},
+			{
+				"name": "dist2",
+				"type": "String"
+			},
+			{
+				"name": "dist3",
+				"type": "String"
+			},
+			{
+				"name": "dist4",
+				"type": "String"
+			},
+			{
+				"name": "teachers",
+				"type": "String"
+			},
+			{
+				"name": "poor_prop",
+				"type": "String"
+			},
+			{
+				"name": "airport",
+				"type": "String"
+			},
+			{
+				"name": "n_hos_beds",
+				"type": "String"
+			},
+			{
+				"name": "n_hot_rooms",
+				"type": "String"
+			},
+			{
+				"name": "waterbody",
+				"type": "String"
+			},
+			{
+				"name": "rainfall",
+				"type": "String"
+			},
+			{
+				"name": "bus_ter",
+				"type": "String"
+			},
+			{
+				"name": "parks",
+				"type": "String"
+			},
+			{
+				"name": "Sold",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

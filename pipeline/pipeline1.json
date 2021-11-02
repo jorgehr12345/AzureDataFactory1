@@ -1,9 +1,9 @@
 {
-	"name": "Copiar1",
+	"name": "pipeline1",
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy_u45",
+				"name": "Copy data1",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -13,16 +13,7 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [
-					{
-						"name": "Source",
-						"value": "datas//original.csv"
-					},
-					{
-						"name": "Destination",
-						"value": "datassalida//copia"
-					}
-				],
+				"userProperties": [],
 				"typeProperties": {
 					"source": {
 						"type": "DelimitedTextSource",
@@ -32,8 +23,7 @@
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
-							"type": "DelimitedTextReadSettings",
-							"skipLineCount": 0
+							"type": "DelimitedTextReadSettings"
 						}
 					},
 					"sink": {
@@ -48,24 +38,31 @@
 						}
 					},
 					"enableStaging": false,
-					"validateDataConsistency": false
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
 				},
 				"inputs": [
 					{
-						"referenceName": "SourceDataset_u45",
+						"referenceName": "asdasd1",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DestinationDataset_u45",
+						"referenceName": "asdasd2",
 						"type": "DatasetReference"
 					}
 				]
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2021-01-11T20:24:18Z"
+		"lastPublishTime": "2021-01-12T01:18:39Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }
