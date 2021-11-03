@@ -1,5 +1,5 @@
 {
-	"name": "DestinationDataset_u45",
+	"name": "triggerOutput",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage2",
