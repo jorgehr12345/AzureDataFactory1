@@ -1,0 +1,25 @@
+{
+	"name": "Prueba1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Copiar1",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 5,
+				"startTime": "2021-11-03T16:15:00",
+				"endTime": "2021-11-04T17:15:00",
+				"timeZone": "SA Pacific Standard Time"
+			}
+		}
+	}
+}
