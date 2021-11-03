@@ -1,5 +1,5 @@
 {
-	"name": "SourceDataset_u45",
+	"name": "triggerInput",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage1",
