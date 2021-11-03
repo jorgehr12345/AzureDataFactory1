@@ -52,13 +52,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SourceDataset_u45",
+						"referenceName": "triggerInput",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DestinationDataset_u45",
+						"referenceName": "triggerOutput",
 						"type": "DatasetReference"
 					}
 				]
