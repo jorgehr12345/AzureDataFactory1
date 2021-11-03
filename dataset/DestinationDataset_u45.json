@@ -5,12 +5,20 @@
 			"referenceName": "AzureBlobStorage2",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"Nombre": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "copia2",
+				"fileName": {
+					"value": "@dataset().Nombre",
+					"type": "Expression"
+				},
 				"container": "datassalida"
 			},
 			"columnDelimiter": ",",
