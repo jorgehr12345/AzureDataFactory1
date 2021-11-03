@@ -107,9 +107,9 @@
 				"type": "ScheduleTrigger",
 				"typeProperties": {
 					"recurrence": {
-						"frequency": "Minute",
-						"interval": 5,
-						"startTime": "2021-11-03T11:25:00",
+						"frequency": "Hour",
+						"interval": 2,
+						"startTime": "2021-11-03T11:33:00",
 						"endTime": "2021-11-04T17:15:00",
 						"timeZone": "SA Pacific Standard Time"
 					}
