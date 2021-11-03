@@ -59,11 +59,23 @@
 				"outputs": [
 					{
 						"referenceName": "triggerOutput",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Nombre": {
+								"value": "@concat(variables('Nombre'),utcnow(),'.csv')",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
 		],
+		"variables": {
+			"Nombre": {
+				"type": "String",
+				"defaultValue": "Salida"
+			}
+		},
 		"annotations": [],
 		"lastPublishTime": "2021-01-11T20:24:18Z"
 	},
