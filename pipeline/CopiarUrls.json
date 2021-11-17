@@ -35,48 +35,60 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Indice",
+									"name": "Comentario",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Indice",
+									"name": "Comentario",
 									"type": "String",
 									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "Fecha",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
 									"name": "FechaPost",
 									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Fecha",
+									"type": "String",
 									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "CantidadComentarios",
+									"name": "Nombre",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "CantidadComentarios",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "NombreCompleto",
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "Url",
+									"name": "Indice",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Urls",
+									"name": "Indice",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TipoComentario",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TipoComentario",
 									"type": "String",
 									"physicalType": "varchar"
 								}
@@ -94,7 +106,7 @@
 						"referenceName": "F_Proyecto",
 						"type": "DatasetReference",
 						"parameters": {
-							"Nombre": "fb_actual_sent.csv"
+							"Nombre": "meter.csv"
 						}
 					}
 				],
