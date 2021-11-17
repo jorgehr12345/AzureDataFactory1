@@ -32,6 +32,56 @@
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Indice",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Indice",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Fecha",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FechaPost",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CantidadComentarios",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CantidadComentarios",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "Url",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Urls",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
