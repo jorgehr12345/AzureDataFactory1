@@ -19,12 +19,12 @@
 						"referenceName": "DtlGenerico2",
 						"type": "DatasetReference"
 					},
-					"enableLogging": true,
+					"enableLogging": false,
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"recursive": true,
 						"wildcardFileName": {
-							"value": "@{concat('Da','ta')}",
+							"value": "@{concat('Da','*')}",
 							"type": "Expression"
 						},
 						"enablePartitionDiscovery": false
