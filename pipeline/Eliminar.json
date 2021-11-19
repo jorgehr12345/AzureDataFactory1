@@ -49,7 +49,7 @@
 						"type": "Expression"
 					},
 					"condition": {
-						"value": "@equals(activity('ObtenerArchivos').output.childItems[2],'Data.csv')",
+						"value": "@contains(string(item().name),'Data.csv')",
 						"type": "Expression"
 					}
 				}
