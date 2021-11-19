@@ -67,6 +67,11 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@activity('Filtrar').output",
+						"type": "Expression"
+					},
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "EliminarArchivoMasivamente",
@@ -83,7 +88,13 @@
 							"typeProperties": {
 								"dataset": {
 									"referenceName": "DtlGenerico",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"NombreArchivo": {
+											"value": "@item()",
+											"type": "Expression"
+										}
+									}
 								},
 								"enableLogging": false,
 								"storeSettings": {
