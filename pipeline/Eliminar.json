@@ -71,7 +71,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Filtrar').output",
+						"value": "@activity('Filtrar').output.value",
 						"type": "Expression"
 					},
 					"isSequential": true,
@@ -94,7 +94,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"NombreArchivo": {
-											"value": "@item().Value.name",
+											"value": "@item().name",
 											"type": "Expression"
 										}
 									}
