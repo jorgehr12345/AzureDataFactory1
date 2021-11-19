@@ -19,6 +19,7 @@
 					"value": "@dataset().Nombre",
 					"type": "Expression"
 				},
+				"folderPath": "carpeta1",
 				"container": "datassalida"
 			},
 			"columnDelimiter": ",",
