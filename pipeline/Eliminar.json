@@ -94,7 +94,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"NombreArchivo": {
-											"value": "@item().name",
+											"value": "@item().Value.name",
 											"type": "Expression"
 										}
 									}
