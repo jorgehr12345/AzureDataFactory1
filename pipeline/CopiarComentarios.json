@@ -35,19 +35,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Comentario",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Comentario",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "FechaPost",
+									"name": "Datetime",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -59,7 +47,31 @@
 							},
 							{
 								"source": {
-									"name": "Nombre",
+									"name": "Tweet Id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Indice",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Text",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Comentario",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Username",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -71,24 +83,36 @@
 							},
 							{
 								"source": {
-									"name": "Indice",
+									"name": "Like Count",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Indice",
-									"type": "String",
-									"physicalType": "varchar"
+									"name": "CantidadMeGusta",
+									"type": "Int32",
+									"physicalType": "int"
 								}
 							},
 							{
 								"source": {
-									"name": "TipoComentario",
+									"name": "RTs Count",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "TipoComentario",
+									"name": "CantidadRetweets",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "URL",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Fuente",
 									"type": "String",
 									"physicalType": "varchar"
 								}
@@ -106,7 +130,7 @@
 						"referenceName": "F_Proyecto",
 						"type": "DatasetReference",
 						"parameters": {
-							"Nombre": "meter.csv"
+							"Nombre": "TwitterMarzo2021.csv"
 						}
 					}
 				],
