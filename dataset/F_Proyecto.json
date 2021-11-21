@@ -21,14 +21,38 @@
 				},
 				"container": "inputproyecto"
 			},
-			"columnDelimiter": ";",
+			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": [
 			{
-				"name": "Indice;Fecha;CantidadComentarios;Url",
+				"name": "Datetime",
+				"type": "String"
+			},
+			{
+				"name": "Tweet Id",
+				"type": "String"
+			},
+			{
+				"name": "Text",
+				"type": "String"
+			},
+			{
+				"name": "Username",
+				"type": "String"
+			},
+			{
+				"name": "Like Count",
+				"type": "String"
+			},
+			{
+				"name": "RTs Count",
+				"type": "String"
+			},
+			{
+				"name": "URL",
 				"type": "String"
 			}
 		]
