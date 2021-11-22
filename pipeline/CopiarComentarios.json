@@ -35,12 +35,36 @@
 						"mappings": [
 							{
 								"source": {
+									"name": "Text",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Comentario",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
 									"name": "Datetime",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
 									"name": "Fecha",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "Username",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NombreCompleto",
 									"type": "String",
 									"physicalType": "varchar"
 								}
@@ -59,24 +83,24 @@
 							},
 							{
 								"source": {
-									"name": "Text",
+									"name": "TipoComentario",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Comentario",
+									"name": "TipoComentario",
 									"type": "String",
 									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "Username",
+									"name": "URL",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "NombreCompleto",
+									"name": "Fuente",
 									"type": "String",
 									"physicalType": "varchar"
 								}
@@ -107,12 +131,12 @@
 							},
 							{
 								"source": {
-									"name": "URL",
+									"name": "Frase",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Fuente",
+									"name": "Frase",
 									"type": "String",
 									"physicalType": "varchar"
 								}
@@ -130,7 +154,7 @@
 						"referenceName": "F_Proyecto",
 						"type": "DatasetReference",
 						"parameters": {
-							"Nombre": "TwitterOctubre2020.csv"
+							"Nombre": "Todo.csv"
 						}
 					}
 				],
