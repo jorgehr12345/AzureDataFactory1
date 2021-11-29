@@ -16,7 +16,7 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": {
-					"value": "@concat('Asd',dataset().asd)",
+					"value": "@concat('Asd',dataset().asd,'.csv')",
 					"type": "Expression"
 				},
 				"container": "datas"
