@@ -1,0 +1,60 @@
+{
+	"name": "F_Proyecto2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Nombre": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().Nombre",
+					"type": "Expression"
+				},
+				"container": "inputproyecto"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Datetime",
+				"type": "String"
+			},
+			{
+				"name": "Tweet Id",
+				"type": "String"
+			},
+			{
+				"name": "Text",
+				"type": "String"
+			},
+			{
+				"name": "Username",
+				"type": "String"
+			},
+			{
+				"name": "Like Count",
+				"type": "String"
+			},
+			{
+				"name": "RTs Count",
+				"type": "String"
+			},
+			{
+				"name": "URL",
+				"type": "String"
+			}
+		]
+	}
+}
