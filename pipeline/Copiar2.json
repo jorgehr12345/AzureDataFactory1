@@ -63,7 +63,13 @@
 				"outputs": [
 					{
 						"referenceName": "prueba2output",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Asd": {
+								"value": "@utcnow()",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
@@ -80,7 +86,7 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
-					"waitTimeInSeconds": 60
+					"waitTimeInSeconds": 20
 				}
 			}
 		],
