@@ -5,18 +5,13 @@
 			"referenceName": "AzureBlobStorage3",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"asd": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": {
-					"value": "@concat('Asd',dataset().asd,'.csv')",
+					"value": "Original.csv",
 					"type": "Expression"
 				},
 				"container": "datas"
