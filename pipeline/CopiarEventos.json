@@ -1,0 +1,123 @@
+{
+	"name": "CopiarEventos",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Indice",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Indice",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "FechaInicio",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FechaInicioEvento",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "NombreEvento",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TipoEvento",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Resultado",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Resultado",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Torneo",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Torneo",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "F_Proyecto2",
+						"type": "DatasetReference",
+						"parameters": {
+							"Nombre": "EventosTodos.csv"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "D_Proyecto2",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
