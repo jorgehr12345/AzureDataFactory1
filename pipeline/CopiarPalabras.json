@@ -32,6 +32,20 @@
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "0",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Palabra",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
