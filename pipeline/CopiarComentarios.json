@@ -160,7 +160,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "D_Proyecto",
+						"referenceName": "D_ProyectoComentario",
 						"type": "DatasetReference"
 					}
 				]
