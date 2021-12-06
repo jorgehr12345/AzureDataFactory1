@@ -47,6 +47,18 @@
 							},
 							{
 								"source": {
+									"name": "FechaPost",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Fecha",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
 									"name": "Username",
 									"type": "String",
 									"physicalType": "String"
@@ -91,18 +103,6 @@
 									"name": "Frase",
 									"type": "String",
 									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "FechaPost",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Fecha",
-									"type": "DateTime",
-									"physicalType": "datetime2"
 								}
 							}
 						],
