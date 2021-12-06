@@ -58,7 +58,7 @@
 						"referenceName": "F_Proyecto",
 						"type": "DatasetReference",
 						"parameters": {
-							"Nombre": "PalabrasPositivas.csv"
+							"Nombre": "PalabrasNegativas.csv"
 						}
 					}
 				],
