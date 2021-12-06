@@ -15,8 +15,45 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"enableStaging": false
-				}
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "F_Proyecto",
+						"type": "DatasetReference",
+						"parameters": {
+							"Nombre": "PalabrasPositivas.csv"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "D_ProyectoPalabra",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"annotations": []
