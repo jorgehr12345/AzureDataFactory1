@@ -1,0 +1,42 @@
+{
+	"name": "D_ProyectoPalabra",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase3",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "HashKeyPosts",
+				"type": "char"
+			},
+			{
+				"name": "HashDiffPosts",
+				"type": "char"
+			},
+			{
+				"name": "Indice",
+				"type": "varchar"
+			},
+			{
+				"name": "FechaPost",
+				"type": "varchar"
+			},
+			{
+				"name": "CantidadComentarios",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Urls",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DimPalabra"
+		}
+	}
+}
