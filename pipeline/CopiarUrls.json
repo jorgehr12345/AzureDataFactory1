@@ -1,0 +1,135 @@
+{
+	"name": "CopiarUrls",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Text",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Comentario",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "FechaPost",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Fecha",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "Username",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NombreCompleto",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Indice",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Indice",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TipoComentario",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TipoComentario",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Frase",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Frase",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "F_Proyecto",
+						"type": "DatasetReference",
+						"parameters": {
+							"Nombre": "TodoFacebook.csv"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "D_ProyectoComentario",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
