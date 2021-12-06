@@ -112,7 +112,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "D_Proyecto2",
+						"referenceName": "D_ProyectoEvento",
 						"type": "DatasetReference"
 					}
 				]
