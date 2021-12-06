@@ -1,5 +1,5 @@
 {
-	"name": "D_Proyecto2",
+	"name": "D_ProyectoEvento",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase3",
