@@ -47,7 +47,7 @@
 							},
 							{
 								"source": {
-									"name": "Datetime",
+									"name": "FechaPost",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -71,7 +71,7 @@
 							},
 							{
 								"source": {
-									"name": "Tweet Id",
+									"name": "Indice",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -91,42 +91,6 @@
 									"name": "TipoComentario",
 									"type": "String",
 									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "URL",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Fuente",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Like Count",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "CantidadMeGusta",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "RTs Count",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "CantidadRetweets",
-									"type": "Int32",
-									"physicalType": "int"
 								}
 							},
 							{
@@ -154,7 +118,7 @@
 						"referenceName": "F_Proyecto",
 						"type": "DatasetReference",
 						"parameters": {
-							"Nombre": "TodoAnios3.csv"
+							"Nombre": "TodoFacebook.csv"
 						}
 					}
 				],
