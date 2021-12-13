@@ -140,18 +140,6 @@
 									"type": "String",
 									"physicalType": "varchar"
 								}
-							},
-							{
-								"source": {
-									"name": "Tweet Id",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "asd",
-									"type": "Int64",
-									"physicalType": "bigint"
-								}
 							}
 						],
 						"typeConversion": true,
