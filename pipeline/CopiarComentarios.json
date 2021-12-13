@@ -47,7 +47,7 @@
 							},
 							{
 								"source": {
-									"name": "FechaPost",
+									"name": "Datetime",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -71,7 +71,7 @@
 							},
 							{
 								"source": {
-									"name": "Indice",
+									"name": "Tweet Id",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -95,6 +95,42 @@
 							},
 							{
 								"source": {
+									"name": "URL",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Fuente",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Like Count",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CantidadMeGusta",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "RTs Count",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CantidadRetweets",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
 									"name": "Frase",
 									"type": "String",
 									"physicalType": "String"
@@ -103,6 +139,18 @@
 									"name": "Frase",
 									"type": "String",
 									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Tweet Id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "asd",
+									"type": "Int64",
+									"physicalType": "bigint"
 								}
 							}
 						],
