@@ -9,29 +9,88 @@
 		"type": "AzureSqlTable",
 		"schema": [
 			{
-				"name": "HashKeyPosts",
+				"name": "HashKeyComentarios",
 				"type": "char"
 			},
 			{
-				"name": "HashDiffPosts",
+				"name": "HashDiffComentarios",
 				"type": "char"
+			},
+			{
+				"name": "Comentario",
+				"type": "varchar"
+			},
+			{
+				"name": "Fecha",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "NombreCompleto",
+				"type": "varchar"
 			},
 			{
 				"name": "Indice",
 				"type": "varchar"
 			},
 			{
-				"name": "FechaPost",
+				"name": "TipoComentario",
 				"type": "varchar"
 			},
 			{
-				"name": "CantidadComentarios",
+				"name": "Fuente",
+				"type": "varchar"
+			},
+			{
+				"name": "CantidadMeGusta",
 				"type": "int",
 				"precision": 10
 			},
 			{
-				"name": "Urls",
+				"name": "CantidadRetweets",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "palabra",
 				"type": "varchar"
+			},
+			{
+				"name": "HashPalabra",
+				"type": "char"
+			},
+			{
+				"name": "HashEvento",
+				"type": "char"
+			},
+			{
+				"name": "NombreEvento",
+				"type": "varchar"
+			},
+			{
+				"name": "Frase",
+				"type": "varchar"
+			},
+			{
+				"name": "FechaParaEvento",
+				"type": "varchar"
+			},
+			{
+				"name": "RedSocial",
+				"type": "varchar"
+			},
+			{
+				"name": "HashPost",
+				"type": "char"
+			},
+			{
+				"name": "IndicePost",
+				"type": "varchar"
+			},
+			{
+				"name": "asd",
+				"type": "bigint",
+				"precision": 19
 			}
 		],
 		"typeProperties": {
