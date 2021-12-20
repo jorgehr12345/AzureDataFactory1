@@ -1,5 +1,5 @@
 {
-	"name": "asdasd2",
+	"name": "datasSalida",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage2",
