@@ -61,7 +61,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "asdasd1",
+									"referenceName": "datas",
 									"type": "DatasetReference"
 								}
 							],
