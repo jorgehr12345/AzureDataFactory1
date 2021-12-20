@@ -5,12 +5,20 @@
 			"referenceName": "Linked1",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"itemName": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "Parquet",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "original.parquet",
+				"fileName": {
+					"value": "@dataset().itemName",
+					"type": "Expression"
+				},
 				"container": "datassalida"
 			},
 			"compressionCodec": "snappy"
