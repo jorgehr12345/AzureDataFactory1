@@ -5,12 +5,20 @@
 			"referenceName": "Linked1",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"ItemName": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "original.csv",
+				"fileName": {
+					"value": "@dataset().ItemName",
+					"type": "Expression"
+				},
 				"container": "datas"
 			},
 			"columnDelimiter": ",",
