@@ -49,13 +49,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "asdasd1",
+						"referenceName": "datas",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "asdasd2",
+						"referenceName": "datasSalida",
 						"type": "DatasetReference"
 					}
 				]
