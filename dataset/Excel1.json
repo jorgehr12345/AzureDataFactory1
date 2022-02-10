@@ -11,7 +11,8 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileSystem": "hacer"
-			}
+			},
+			"firstRowAsHeader": true
 		},
 		"schema": []
 	}
