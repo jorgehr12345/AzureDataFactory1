@@ -1,10 +1,10 @@
 {
-	"name": "AutomatizacionExtraccion",
+	"name": "Copiar",
 	"properties": {
 		"activities": [
 			{
-				"name": "ScrapearArchivos",
-				"type": "DatabricksNotebook",
+				"name": "Copiar",
+				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
@@ -13,53 +13,25 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
-			},
-			{
-				"name": "GuardarMaestros",
-				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "ScrapearArchivos",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
 				"userProperties": [],
 				"typeProperties": {
+					"source": {
+						"type": "ExcelSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"wildcardFileName": "*",
+							"enablePartitionDiscovery": false
+						}
+					},
 					"enableStaging": false
-				}
-			},
-			{
-				"name": "GuardarComentarios",
-				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "GuardarMaestros",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
 				},
-				"userProperties": [],
-				"typeProperties": {
-					"enableStaging": false
-				}
+				"inputs": [
+					{
+						"referenceName": "Excel1",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"annotations": []
