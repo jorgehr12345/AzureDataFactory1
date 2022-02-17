@@ -317,7 +317,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "tbcentgtw01"
+			"table": "tbfunction01"
 		}
 	}
 }
