@@ -39,7 +39,7 @@
 								"sink": {
 									"name": "fecha_azure",
 									"type": "DateTime",
-									"physicalType": "date"
+									"physicalType": "timestamp without time zone"
 								}
 							},
 							{
