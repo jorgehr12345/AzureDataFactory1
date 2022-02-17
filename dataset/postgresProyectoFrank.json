@@ -1,5 +1,5 @@
 {
-	"name": "Asd",
+	"name": "postgresProyectoFrank",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "PostgreSql1",
