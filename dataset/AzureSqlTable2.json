@@ -1,0 +1,323 @@
+{
+	"name": "AzureSqlTable2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase4",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Fecha_azure",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "TsTes01Sens01",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens02",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens03",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens04",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens05",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens06",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens07",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens08",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens09",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens10",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens11",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens12",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens13",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens14",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens15",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens16",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens17",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens18",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens19",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens20",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens21",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens22",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens23",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens24",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens25",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens26",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens27",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens28",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens29",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens30",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens31",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens32",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens33",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens34",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens35",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens36",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens37",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens38",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens39",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens40",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens41",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens42",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens43",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens44",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens45",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens46",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens47",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens48",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens49",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens50",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens51",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens52",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens53",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens54",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens55",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens56",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens57",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens58",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens59",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TsTes01Sens60",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbcentgtw01"
+		}
+	}
+}
