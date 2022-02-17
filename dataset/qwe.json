@@ -1,0 +1,12 @@
+{
+	"name": "qwe",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OutputTasa",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": []
+	}
+}
