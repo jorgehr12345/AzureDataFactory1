@@ -10,7 +10,7 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": "public",
-			"table": "tbfunction01"
+			"table": "asd"
 		}
 	}
 }
