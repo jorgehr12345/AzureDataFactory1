@@ -43,421 +43,721 @@
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens01",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens01",
+									"name": "tstes01sens01",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens02",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens02",
+									"name": "tstes01sens02",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens03",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens03",
+									"name": "tstes01sens03",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens04",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens04",
+									"name": "tstes01sens04",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens05",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens05",
+									"name": "tstes01sens05",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens06",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens06",
+									"name": "tstes01sens06",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens07",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens07",
+									"name": "tstes01sens07",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens08",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens08",
+									"name": "tstes01sens08",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens09",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens09",
+									"name": "tstes01sens09",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens10",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens10",
+									"name": "tstes01sens10",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens11",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens11",
+									"name": "tstes01sens11",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens12",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens12",
+									"name": "tstes01sens12",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens13",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens13",
+									"name": "tstes01sens13",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens14",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens14",
+									"name": "tstes01sens14",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens15",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens15",
+									"name": "tstes01sens15",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens16",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens16",
+									"name": "tstes01sens16",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens17",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens17",
+									"name": "tstes01sens17",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens18",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens18",
+									"name": "tstes01sens18",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens19",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens19",
+									"name": "tstes01sens19",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens20",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens20",
+									"name": "tstes01sens20",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens21",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens21",
+									"name": "tstes01sens21",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens22",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens22",
+									"name": "tstes01sens22",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens23",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens23",
+									"name": "tstes01sens23",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens24",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens24",
+									"name": "tstes01sens24",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens25",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens25",
+									"name": "tstes01sens25",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens26",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens26",
+									"name": "tstes01sens26",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens27",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens27",
+									"name": "tstes01sens27",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens28",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens28",
+									"name": "tstes01sens28",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens29",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens29",
+									"name": "tstes01sens29",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens30",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens30",
+									"name": "tstes01sens30",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens31",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens31",
+									"name": "tstes01sens31",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens32",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens32",
+									"name": "tstes01sens32",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens33",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens33",
+									"name": "tstes01sens33",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens34",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens34",
+									"name": "tstes01sens34",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens35",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens35",
+									"name": "tstes01sens35",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens36",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens36",
+									"name": "tstes01sens36",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens37",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens37",
+									"name": "tstes01sens37",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens38",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens38",
+									"name": "tstes01sens38",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens39",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens39",
+									"name": "tstes01sens39",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens40",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens40",
+									"name": "tstes01sens40",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens41",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens41",
+									"name": "tstes01sens41",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens42",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens42",
+									"name": "tstes01sens42",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens43",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens43",
+									"name": "tstes01sens43",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens44",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens44",
+									"name": "tstes01sens44",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens45",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens45",
+									"name": "tstes01sens45",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens46",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens46",
+									"name": "tstes01sens46",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens47",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens47",
+									"name": "tstes01sens47",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens48",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens48",
+									"name": "tstes01sens48",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens49",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens49",
+									"name": "tstes01sens49",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens50",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens50",
+									"name": "tstes01sens50",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens51",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens51",
+									"name": "tstes01sens51",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens52",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens52",
+									"name": "tstes01sens52",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens53",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens53",
+									"name": "tstes01sens53",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens54",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens54",
+									"name": "tstes01sens54",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens55",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens55",
+									"name": "tstes01sens55",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens56",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens56",
+									"name": "tstes01sens56",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens57",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens57",
+									"name": "tstes01sens57",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens58",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens58",
+									"name": "tstes01sens58",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens59",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens59",
+									"name": "tstes01sens59",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
 							},
 							{
+								"source": {
+									"name": "TsTes01Sens60",
+									"type": "Double",
+									"physicalType": "float"
+								},
 								"sink": {
-									"name": "tstest01sens60",
+									"name": "tstes01sens60",
 									"type": "Decimal",
 									"physicalType": "numeric"
 								}
