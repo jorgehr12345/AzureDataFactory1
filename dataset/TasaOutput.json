@@ -377,7 +377,7 @@
 		],
 		"typeProperties": {
 			"schema": "public",
-			"table": "tbcentgtw01"
+			"table": "tbcentgtw02"
 		}
 	}
 }
