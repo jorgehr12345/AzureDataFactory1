@@ -7,7 +7,374 @@
 		},
 		"annotations": [],
 		"type": "AzurePostgreSqlTable",
-		"schema": [],
+		"schema": [
+			{
+				"name": "fecha_azure",
+				"type": "timestamp without time zone",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "tstest01sens01",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens02",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens03",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens04",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens05",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens06",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens07",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens08",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens09",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens10",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens11",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens12",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens13",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens14",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens15",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens16",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens17",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens18",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens19",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens20",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens21",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens22",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens23",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens24",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens25",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens26",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens27",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens28",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens29",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens30",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens31",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens32",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens33",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens34",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens35",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens36",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens37",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens38",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens39",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens40",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens41",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens42",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens43",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens44",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens45",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens46",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens47",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens48",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens49",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens50",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens51",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens52",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens53",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens54",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens55",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens56",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens57",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens58",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens59",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "tstest01sens60",
+				"type": "numeric",
+				"precision": 6,
+				"scale": 2
+			}
+		],
 		"typeProperties": {
 			"schema": "public",
 			"table": "tbcentgtw01"
