@@ -14,10 +14,19 @@
 		"AzureBlobStorage3_connectionString": {
 			"value": ""
 		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
 		"AzureSqlDatabase1_connectionString": {
 			"value": ""
 		},
 		"AzureSqlDatabase2_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase3_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase4_connectionString": {
 			"value": ""
 		},
 		"AzureTableStorage1_connectionString": {
@@ -25,6 +34,18 @@
 		},
 		"Linked1_connectionString": {
 			"value": ""
+		},
+		"OutputTasa_connectionString": {
+			"value": ""
+		},
+		"PostgreSql1_connectionString": {
+			"value": ""
+		},
+		"PruebaDatabricks_accessToken": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://inputpowerbi2.dfs.core.windows.net"
 		},
 		"containerUri": {
 			"value": ""

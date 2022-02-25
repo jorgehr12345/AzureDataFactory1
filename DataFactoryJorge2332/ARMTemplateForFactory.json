@@ -19,6 +19,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage3'"
 		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
 		"AzureSqlDatabase1_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
@@ -27,6 +31,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase2'"
 		},
+		"AzureSqlDatabase3_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase3'"
+		},
+		"AzureSqlDatabase4_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase4'"
+		},
 		"AzureTableStorage1_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureTableStorage1'"
@@ -34,6 +46,22 @@
 		"Linked1_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'Linked1'"
+		},
+		"OutputTasa_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'OutputTasa'"
+		},
+		"PostgreSql1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'PostgreSql1'"
+		},
+		"PruebaDatabricks_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'PruebaDatabricks'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://inputpowerbi2.dfs.core.windows.net"
 		}
 	},
 	"variables": {
@@ -195,9 +223,30 @@
 							{
 								"referenceName": "prueba2output",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"Asd": {
+										"value": "@utcnow()",
+										"type": "Expression"
+									}
+								}
 							}
 						]
+					},
+					{
+						"name": "Wait1",
+						"type": "Wait",
+						"dependsOn": [
+							{
+								"activity": "Copy data1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 20
+						}
 					}
 				],
 				"policy": {
@@ -210,6 +259,1655 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/prueba2input')]",
 				"[concat(variables('factoryId'), '/datasets/prueba2output')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CopiarComentarios')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "Text",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Comentario",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Datetime",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Fecha",
+											"type": "DateTime",
+											"physicalType": "datetime2"
+										}
+									},
+									{
+										"source": {
+											"name": "Username",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "NombreCompleto",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Tweet Id",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Indice",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "TipoComentario",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "TipoComentario",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "URL",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Fuente",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Like Count",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CantidadMeGusta",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "RTs Count",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "CantidadRetweets",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "Frase",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Frase",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "F_Proyecto",
+								"type": "DatasetReference",
+								"parameters": {
+									"Nombre": "DataAlianza4.csv"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "D_ProyectoComentario",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/F_Proyecto')]",
+				"[concat(variables('factoryId'), '/datasets/D_ProyectoComentario')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CopiarEventos')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "Indice",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Indice",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "FechaInicio",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "FechaInicioEvento",
+											"type": "DateTime",
+											"physicalType": "datetime2"
+										}
+									},
+									{
+										"source": {
+											"name": "NombreEvento",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "TipoEvento",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Resultado",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Resultado",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Torneo",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Torneo",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "F_Proyecto2",
+								"type": "DatasetReference",
+								"parameters": {
+									"Nombre": "EventosTodos.csv"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "D_ProyectoEvento",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/F_Proyecto2')]",
+				"[concat(variables('factoryId'), '/datasets/D_ProyectoEvento')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CopiarPalabras')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "0",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Palabra",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "F_Proyecto",
+								"type": "DatasetReference",
+								"parameters": {
+									"Nombre": "PalabrasNegativas.csv"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "D_ProyectoPalabra",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/F_Proyecto')]",
+				"[concat(variables('factoryId'), '/datasets/D_ProyectoPalabra')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CopiarUrls')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "ParquetSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "ParquetWriteSettings"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "InputDatas",
+								"type": "DatasetReference",
+								"parameters": {
+									"ItemName": "Personas.csv"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "OutputDatas",
+								"type": "DatasetReference",
+								"parameters": {
+									"itemName": "Personas.parquet"
+								}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/InputDatas')]",
+				"[concat(variables('factoryId'), '/datasets/OutputDatas')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Eliminar')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "ObtenerArchivos",
+						"type": "GetMetadata",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "DtlGenerico",
+								"type": "DatasetReference",
+								"parameters": {
+									"NombreArchivo": "'asdasd'"
+								}
+							},
+							"fieldList": [
+								"childItems"
+							],
+							"storeSettings": {
+								"type": "AzureBlobStorageReadSettings",
+								"recursive": true,
+								"enablePartitionDiscovery": false
+							},
+							"formatSettings": {
+								"type": "DelimitedTextReadSettings"
+							}
+						}
+					},
+					{
+						"name": "Filtrar",
+						"type": "Filter",
+						"dependsOn": [
+							{
+								"activity": "ObtenerArchivos",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('ObtenerArchivos').output.childItems",
+								"type": "Expression"
+							},
+							"condition": {
+								"value": "@not(contains(string(item().type),'Folder'))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "ForEach1",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "Filtrar",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('Filtrar').output.Value",
+								"type": "Expression"
+							},
+							"isSequential": true,
+							"activities": [
+								{
+									"name": "EliminarArchivoMasivamente",
+									"type": "Delete",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"dataset": {
+											"referenceName": "DtlGenerico",
+											"type": "DatasetReference",
+											"parameters": {
+												"NombreArchivo": {
+													"value": "@item().name",
+													"type": "Expression"
+												}
+											}
+										},
+										"enableLogging": false,
+										"storeSettings": {
+											"type": "AzureBlobStorageReadSettings",
+											"recursive": true,
+											"enablePartitionDiscovery": false
+										}
+									}
+								}
+							]
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DtlGenerico')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/bdTasa')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "AzurePostgreSQLSink",
+								"writeBatchSize": 1000000,
+								"writeBatchTimeout": "00:30:00",
+								"writeMethod": "CopyCommand"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "Fecha_azure",
+											"type": "DateTime",
+											"physicalType": "datetime"
+										},
+										"sink": {
+											"name": "fecha_azure",
+											"type": "DateTime",
+											"physicalType": "timestamp without time zone"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens01",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens01",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens02",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens02",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens03",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens03",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens04",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens04",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens05",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens05",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens06",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens06",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens07",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens07",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens08",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens08",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens09",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens09",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens10",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens10",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens11",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens11",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens12",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens12",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens13",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens13",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens14",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens14",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens15",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens15",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens16",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens16",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens17",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens17",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens18",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens18",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens19",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens19",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens20",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens20",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens21",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens21",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens22",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens22",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens23",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens23",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens24",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens24",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens25",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens25",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens26",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens26",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens27",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens27",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens28",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens28",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens29",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens29",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens30",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens30",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens31",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens31",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens32",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens32",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens33",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens33",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens34",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens34",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens35",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens35",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens36",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens36",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens37",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens37",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens38",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens38",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens39",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens39",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens40",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens40",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens41",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens41",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens42",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens42",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens43",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens43",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens44",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens44",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens45",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens45",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens46",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens46",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens47",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens47",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens48",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens48",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens49",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens49",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens50",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens50",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens51",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens51",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens52",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens52",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens53",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens53",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens54",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens54",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens55",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens55",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens56",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens56",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens57",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens57",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens58",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens58",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens59",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens59",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									},
+									{
+										"source": {
+											"name": "TsTes02Sens60",
+											"type": "Double",
+											"physicalType": "float"
+										},
+										"sink": {
+											"name": "tstes02sens60",
+											"type": "Decimal",
+											"physicalType": "numeric"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "TasaInput",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "TasaOutput",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/TasaInput')]",
+				"[concat(variables('factoryId'), '/datasets/TasaOutput')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/condicional')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Get Metadata1",
+						"type": "GetMetadata",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "InputDatas",
+								"type": "DatasetReference",
+								"parameters": {
+									"ItemName": "original.csv"
+								}
+							},
+							"fieldList": [
+								"exists"
+							],
+							"storeSettings": {
+								"type": "AzureBlobStorageReadSettings",
+								"recursive": true,
+								"enablePartitionDiscovery": false
+							},
+							"formatSettings": {
+								"type": "DelimitedTextReadSettings"
+							}
+						}
+					},
+					{
+						"name": "If Condition1",
+						"type": "IfCondition",
+						"dependsOn": [
+							{
+								"activity": "Get Metadata1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"expression": {
+								"value": "@equals(activity('Get Metadata1').output.exists,true)",
+								"type": "Expression"
+							},
+							"ifTrueActivities": [
+								{
+									"name": "Copy data1",
+									"type": "Copy",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "DelimitedTextSource",
+											"storeSettings": {
+												"type": "AzureBlobStorageReadSettings",
+												"recursive": true,
+												"enablePartitionDiscovery": false
+											},
+											"formatSettings": {
+												"type": "DelimitedTextReadSettings"
+											}
+										},
+										"sink": {
+											"type": "ParquetSink",
+											"storeSettings": {
+												"type": "AzureBlobStorageWriteSettings"
+											},
+											"formatSettings": {
+												"type": "ParquetWriteSettings"
+											}
+										},
+										"enableStaging": false,
+										"translator": {
+											"type": "TabularTranslator",
+											"typeConversion": true,
+											"typeConversionSettings": {
+												"allowDataTruncation": true,
+												"treatBooleanAsNumber": false
+											}
+										}
+									},
+									"inputs": [
+										{
+											"referenceName": "InputDatas",
+											"type": "DatasetReference",
+											"parameters": {
+												"ItemName": "Asd.csv"
+											}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "OutputDatas",
+											"type": "DatasetReference",
+											"parameters": {
+												"itemName": "Asd.parquet"
+											}
+										}
+									]
+								},
+								{
+									"name": "Copy data1_copy1",
+									"type": "Copy",
+									"dependsOn": [
+										{
+											"activity": "Copy data1",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "DelimitedTextSource",
+											"storeSettings": {
+												"type": "AzureBlobStorageReadSettings",
+												"recursive": true,
+												"enablePartitionDiscovery": false
+											},
+											"formatSettings": {
+												"type": "DelimitedTextReadSettings"
+											}
+										},
+										"sink": {
+											"type": "ParquetSink",
+											"storeSettings": {
+												"type": "AzureBlobStorageWriteSettings"
+											},
+											"formatSettings": {
+												"type": "ParquetWriteSettings"
+											}
+										},
+										"enableStaging": false,
+										"translator": {
+											"type": "TabularTranslator",
+											"typeConversion": true,
+											"typeConversionSettings": {
+												"allowDataTruncation": true,
+												"treatBooleanAsNumber": false
+											}
+										}
+									},
+									"inputs": [
+										{
+											"referenceName": "InputDatas",
+											"type": "DatasetReference",
+											"parameters": {
+												"ItemName": "Asd.csv"
+											}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "OutputDatas",
+											"type": "DatasetReference",
+											"parameters": {
+												"itemName": "Asd.parquet"
+											}
+										}
+									]
+								}
+							]
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/InputDatas')]",
+				"[concat(variables('factoryId'), '/datasets/OutputDatas')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/databricks1')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Notebook1",
+						"type": "DatabricksNotebook",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/jorge.huaman@gestionysistemas.com/Ejemplo4"
+						},
+						"linkedServiceName": {
+							"referenceName": "PruebaDatabricks",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/PruebaDatabricks')]"
 			]
 		},
 		{
@@ -277,7 +1975,7 @@
 									},
 									"inputs": [
 										{
-											"referenceName": "asdasd1",
+											"referenceName": "datas",
 											"type": "DatasetReference",
 											"parameters": {}
 										}
@@ -317,12 +2015,156 @@
 				"lastPublishTime": "2021-01-14T13:38:39Z"
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/asdasd1')]",
+				"[concat(variables('factoryId'), '/datasets/datas')]",
 				"[concat(variables('factoryId'), '/datasets/forEachOutput')]"
 			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Wait1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "ParquetSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "ParquetWriteSettings"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "InputDatas",
+								"type": "DatasetReference",
+								"parameters": {
+									"ItemName": "original.csv"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "OutputDatas",
+								"type": "DatasetReference",
+								"parameters": {
+									"itemName": "original.parquet"
+								}
+							}
+						]
+					},
+					{
+						"name": "Wait1",
+						"type": "Wait",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 20
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-01-12T01:18:39Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/InputDatas')]",
+				"[concat(variables('factoryId'), '/datasets/OutputDatas')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline2')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Delete1",
+						"type": "Delete",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "DtlGenerico2",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"enableLogging": false,
+							"storeSettings": {
+								"type": "AzureBlobStorageReadSettings",
+								"recursive": true,
+								"wildcardFileName": {
+									"value": "@{concat('Da','ta','*')}",
+									"type": "Expression"
+								},
+								"enablePartitionDiscovery": false
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DtlGenerico2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline3')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -352,15 +2194,9 @@
 								}
 							},
 							"sink": {
-								"type": "DelimitedTextSink",
-								"storeSettings": {
-									"type": "AzureBlobStorageWriteSettings"
-								},
-								"formatSettings": {
-									"type": "DelimitedTextWriteSettings",
-									"quoteAllText": true,
-									"fileExtension": ".txt"
-								}
+								"type": "AzureSqlSink",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false
 							},
 							"enableStaging": false,
 							"translator": {
@@ -374,14 +2210,16 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "asdasd1",
+								"referenceName": "F_Proyecto2",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"Nombre": "alumnosoutput.csv"
+								}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "asdasd2",
+								"referenceName": "AzureSqlTable1",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -392,12 +2230,11 @@
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
-				"annotations": [],
-				"lastPublishTime": "2021-01-12T01:18:39Z"
+				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/asdasd1')]",
-				"[concat(variables('factoryId'), '/datasets/asdasd2')]"
+				"[concat(variables('factoryId'), '/datasets/F_Proyecto2')]",
+				"[concat(variables('factoryId'), '/datasets/AzureSqlTable1')]"
 			]
 		},
 		{
@@ -436,12 +2273,269 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/InputDatas')]",
+			"name": "[concat(parameters('factoryName'), '/D_ProyectoComentario')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "Linked1",
+					"referenceName": "AzureSqlDatabase3",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "HashKeyComentarios",
+						"type": "char"
+					},
+					{
+						"name": "HashDiffComentarios",
+						"type": "char"
+					},
+					{
+						"name": "Comentario",
+						"type": "varchar"
+					},
+					{
+						"name": "Fecha",
+						"type": "datetime2",
+						"scale": 7
+					},
+					{
+						"name": "NombreCompleto",
+						"type": "varchar"
+					},
+					{
+						"name": "Indice",
+						"type": "varchar"
+					},
+					{
+						"name": "TipoComentario",
+						"type": "varchar"
+					},
+					{
+						"name": "Fuente",
+						"type": "varchar"
+					},
+					{
+						"name": "CantidadMeGusta",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "CantidadRetweets",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "palabra",
+						"type": "varchar"
+					},
+					{
+						"name": "HashPalabra",
+						"type": "char"
+					},
+					{
+						"name": "HashEvento",
+						"type": "char"
+					},
+					{
+						"name": "NombreEvento",
+						"type": "varchar"
+					},
+					{
+						"name": "Frase",
+						"type": "varchar"
+					},
+					{
+						"name": "FechaParaEvento",
+						"type": "varchar"
+					},
+					{
+						"name": "RedSocial",
+						"type": "varchar"
+					},
+					{
+						"name": "HashPost",
+						"type": "char"
+					},
+					{
+						"name": "IndicePost",
+						"type": "varchar"
+					},
+					{
+						"name": "asd",
+						"type": "bigint",
+						"precision": 19
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "DimComentarios"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase3')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/D_ProyectoEvento')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase3",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "HashKeyPosts",
+						"type": "char"
+					},
+					{
+						"name": "HashDiffPosts",
+						"type": "char"
+					},
+					{
+						"name": "Indice",
+						"type": "varchar"
+					},
+					{
+						"name": "FechaPost",
+						"type": "varchar"
+					},
+					{
+						"name": "CantidadComentarios",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "Urls",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "DimEvento"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase3')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/D_ProyectoPalabra')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase3",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "HashKeyPosts",
+						"type": "char"
+					},
+					{
+						"name": "HashDiffPosts",
+						"type": "char"
+					},
+					{
+						"name": "Indice",
+						"type": "varchar"
+					},
+					{
+						"name": "FechaPost",
+						"type": "varchar"
+					},
+					{
+						"name": "CantidadComentarios",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "Urls",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "DimPalabra"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase3')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DatasetOutputAlumnos')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "PostgreSql1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "PostgreSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "public",
+					"table": "alumno"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/PostgreSql1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DtlGenerico')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"NombreArchivo": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": {
+							"value": "@dataset().NombreArchivo",
+							"type": "Expression"
+						},
+						"container": "datassalida"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DtlGenerico2')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
@@ -449,8 +2543,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "original.csv",
-						"container": "datas"
+						"container": "datassalida"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -459,82 +2552,306 @@
 				},
 				"schema": [
 					{
-						"name": "price",
+						"name": "24",
 						"type": "String"
 					},
 					{
-						"name": "resid_area",
+						"name": "32.31",
 						"type": "String"
 					},
 					{
-						"name": "air_qual",
+						"name": "0.538",
 						"type": "String"
 					},
 					{
-						"name": "room_num",
+						"name": "6.575",
 						"type": "String"
 					},
 					{
-						"name": "age",
+						"name": "65.2",
 						"type": "String"
 					},
 					{
-						"name": "dist1",
+						"name": "4.35",
 						"type": "String"
 					},
 					{
-						"name": "dist2",
+						"name": "3.81",
 						"type": "String"
 					},
 					{
-						"name": "dist3",
+						"name": "4.18",
 						"type": "String"
 					},
 					{
-						"name": "dist4",
+						"name": "4.01",
 						"type": "String"
 					},
 					{
-						"name": "teachers",
+						"name": "24.7",
 						"type": "String"
 					},
 					{
-						"name": "poor_prop",
+						"name": "4.98",
 						"type": "String"
 					},
 					{
-						"name": "airport",
+						"name": "YES11",
 						"type": "String"
 					},
 					{
-						"name": "n_hos_beds",
+						"name": "5.48",
 						"type": "String"
 					},
 					{
-						"name": "n_hot_rooms",
+						"name": "11.192",
 						"type": "String"
 					},
 					{
-						"name": "waterbody",
+						"name": "River",
 						"type": "String"
 					},
 					{
-						"name": "rainfall",
+						"name": "23",
 						"type": "String"
 					},
 					{
-						"name": "bus_ter",
+						"name": "YES16",
 						"type": "String"
 					},
 					{
-						"name": "parks",
+						"name": "0.049347306",
 						"type": "String"
 					},
 					{
-						"name": "Sold",
+						"name": "0",
 						"type": "String"
 					}
 				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Excel1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "Sheet1",
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileSystem": "hacer"
+					},
+					"firstRowAsHeader": true
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Excel2')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "Sheet1",
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileSystem": "hacer2"
+					},
+					"firstRowAsHeader": true
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/F_Proyecto')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"Nombre": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": {
+							"value": "@dataset().Nombre",
+							"type": "Expression"
+						},
+						"container": "inputproyecto"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Datetime",
+						"type": "String"
+					},
+					{
+						"name": "Tweet Id",
+						"type": "String"
+					},
+					{
+						"name": "Text",
+						"type": "String"
+					},
+					{
+						"name": "Username",
+						"type": "String"
+					},
+					{
+						"name": "Like Count",
+						"type": "String"
+					},
+					{
+						"name": "RTs Count",
+						"type": "String"
+					},
+					{
+						"name": "URL",
+						"type": "String"
+					},
+					{
+						"name": "Frase",
+						"type": "String"
+					},
+					{
+						"name": "TipoComentario",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/F_Proyecto2')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"Nombre": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": {
+							"value": "@dataset().Nombre",
+							"type": "Expression"
+						},
+						"container": "inputproyecto"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Datetime",
+						"type": "String"
+					},
+					{
+						"name": "Tweet Id",
+						"type": "String"
+					},
+					{
+						"name": "Text",
+						"type": "String"
+					},
+					{
+						"name": "Username",
+						"type": "String"
+					},
+					{
+						"name": "Like Count",
+						"type": "String"
+					},
+					{
+						"name": "RTs Count",
+						"type": "String"
+					},
+					{
+						"name": "URL",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/InputDatas')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Linked1",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"ItemName": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": {
+							"value": "@dataset().ItemName",
+							"type": "Expression"
+						},
+						"container": "datas"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/Linked1')]"
@@ -549,12 +2866,20 @@
 					"referenceName": "Linked1",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"itemName": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "Parquet",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "original.parquet",
+						"fileName": {
+							"value": "@dataset().itemName",
+							"type": "Expression"
+						},
 						"container": "datassalida"
 					},
 					"compressionCodec": "snappy"
@@ -566,7 +2891,723 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/asdasd1')]",
+			"name": "[concat(parameters('factoryName'), '/TasaInput')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase4",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "Fecha_azure",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "TsTes02Sens01",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens02",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens03",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens04",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens05",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens06",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens07",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens08",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens09",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens10",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens11",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens12",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens13",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens14",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens15",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens16",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens17",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens18",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens19",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens20",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens21",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens22",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens23",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens24",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens25",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens26",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens27",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens28",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens29",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens30",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens31",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens32",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens33",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens34",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens35",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens36",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens37",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens38",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens39",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens40",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens41",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens42",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens43",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens44",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens45",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens46",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens47",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens48",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens49",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens50",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens51",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens52",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens53",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens54",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens55",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens56",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens57",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens58",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens59",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "TsTes02Sens60",
+						"type": "float",
+						"precision": 15
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "tbcentgtw01"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase4')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/TasaOutput')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "OutputTasa",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzurePostgreSqlTable",
+				"schema": [
+					{
+						"name": "fecha_azure",
+						"type": "timestamp without time zone",
+						"precision": 0,
+						"scale": 0
+					},
+					{
+						"name": "tstes01sens01",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens02",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens03",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens04",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens05",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens06",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens07",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens08",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens09",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens10",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens11",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens12",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens13",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens14",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens15",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens16",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens17",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens18",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens19",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens20",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens21",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens22",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens23",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens24",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens25",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens26",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens27",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens28",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens29",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens30",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens31",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens32",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens33",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens34",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens35",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens36",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens37",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens38",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens39",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens40",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens41",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens42",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens43",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens44",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens45",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens46",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens47",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens48",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens49",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens50",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens51",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens52",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens53",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens54",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens55",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens56",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens57",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens58",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens59",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "tstes01sens60",
+						"type": "numeric",
+						"precision": 6,
+						"scale": 2
+					}
+				],
+				"typeProperties": {
+					"schema": "public",
+					"table": "tbcentgtw01"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/OutputTasa')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/datas')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -593,7 +3634,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/asdasd2')]",
+			"name": "[concat(parameters('factoryName'), '/datasSalida')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -655,6 +3696,27 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/postgresProyectoFrank')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "PostgreSql1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "PostgreSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "information_schema",
+					"table": "domains"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/PostgreSql1')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/prueba2input')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -668,7 +3730,10 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "original.csv",
+						"fileName": {
+							"value": "Original.csv",
+							"type": "Expression"
+						},
 						"container": "datas"
 					},
 					"columnDelimiter": ",",
@@ -748,11 +3813,20 @@
 					"referenceName": "AzureBlobStorage3",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"Asd": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
+						"fileName": {
+							"value": "@concat('Asdasdd',dataset().Asd,'.csv')",
+							"type": "Expression"
+						},
 						"container": "datassalida"
 					},
 					"columnDelimiter": ",",
@@ -893,6 +3967,7 @@
 							"value": "@dataset().Nombre",
 							"type": "Expression"
 						},
+						"folderPath": "carpeta1",
 						"container": "datassalida"
 					},
 					"columnDelimiter": ",",
@@ -945,6 +4020,23 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/AzureDataLakeStorage1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabase1')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -971,6 +4063,32 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabase3')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureSqlDatabase3_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabase4')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureSqlDatabase4_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/AzureTableStorage1')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -992,6 +4110,54 @@
 				"type": "AzureBlobStorage",
 				"typeProperties": {
 					"connectionString": "[parameters('Linked1_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/OutputTasa')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzurePostgreSql",
+				"typeProperties": {
+					"connectionString": "[parameters('OutputTasa_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PostgreSql1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "PostgreSql",
+				"typeProperties": {
+					"connectionString": "[parameters('PostgreSql1_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PruebaDatabricks')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureDatabricks",
+				"typeProperties": {
+					"domain": "https://adb-5541433997733707.7.azuredatabricks.net",
+					"accessToken": {
+						"type": "SecureString",
+						"value": "[parameters('PruebaDatabricks_accessToken')]"
+					},
+					"newClusterNodeType": "Standard_F4",
+					"newClusterNumOfWorker": "1",
+					"newClusterVersion": "8.3.x-scala2.12",
+					"newClusterInitScripts": [],
+					"clusterOption": "Fixed"
 				}
 			},
 			"dependsOn": []
