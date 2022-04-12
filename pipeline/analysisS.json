@@ -67,10 +67,8 @@
 								},
 								"sink": {
 									"name": "Nota1",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 3,
-									"precision": 8
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -81,10 +79,8 @@
 								},
 								"sink": {
 									"name": "Nota2",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 3,
-									"precision": 8
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -95,10 +91,8 @@
 								},
 								"sink": {
 									"name": "Nota3",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 3,
-									"precision": 8
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
