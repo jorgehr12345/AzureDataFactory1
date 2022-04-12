@@ -1,0 +1,168 @@
+{
+	"name": "analysisS",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Codigo",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Codigo",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Nombres",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Nombres",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Nota1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Nota1",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 3,
+									"precision": 8
+								}
+							},
+							{
+								"source": {
+									"name": "Nota2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Nota2",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 3,
+									"precision": 8
+								}
+							},
+							{
+								"source": {
+									"name": "Nota3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Nota3",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 3,
+									"precision": 8
+								}
+							},
+							{
+								"source": {
+									"name": "NotaTotal",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NotaTotal",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 3,
+									"precision": 8
+								}
+							},
+							{
+								"source": {
+									"name": "NotaVigesimal",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NotaVigesimal",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 3,
+									"precision": 8
+								}
+							},
+							{
+								"source": {
+									"name": "CarreraIngreso",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CarreraIngreso",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "InputPowerBi",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
