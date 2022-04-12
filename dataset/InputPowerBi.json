@@ -1,0 +1,56 @@
+{
+	"name": "InputPowerBi",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "NotasTotales.csv",
+				"fileSystem": "postulantes"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Codigo",
+				"type": "String"
+			},
+			{
+				"name": "Nombres",
+				"type": "String"
+			},
+			{
+				"name": "Nota1",
+				"type": "String"
+			},
+			{
+				"name": "Nota2",
+				"type": "String"
+			},
+			{
+				"name": "Nota3",
+				"type": "String"
+			},
+			{
+				"name": "NotaTotal",
+				"type": "String"
+			},
+			{
+				"name": "NotaVigesimal",
+				"type": "String"
+			},
+			{
+				"name": "CarreraIngreso",
+				"type": "String"
+			}
+		]
+	}
+}
