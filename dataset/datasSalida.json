@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "copia10",
+				"fileName": "output.csv",
 				"container": "datassalida"
 			},
 			"columnDelimiter": ",",
