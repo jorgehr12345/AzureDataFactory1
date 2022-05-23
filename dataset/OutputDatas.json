@@ -15,11 +15,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": {
-					"value": "@dataset().itemName",
-					"type": "Expression"
-				},
-				"container": "datassalida"
+				"fileName": "Entidad_Pago_20220429175307.parquet",
+				"container": "datas"
 			},
 			"compressionCodec": "snappy"
 		},
