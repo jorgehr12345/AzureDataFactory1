@@ -49,14 +49,17 @@
 						"referenceName": "OutputDatas",
 						"type": "DatasetReference",
 						"parameters": {
-							"itemName": "Entidad_Pago_20220509191346 (1).parquet"
+							"Item": "Concepto_Pago_Entidad_Pago_20220429175252.parquet"
 						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "datasSalida",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"asd": "Concepto_Pago_Entidad_Pago_20220429175252.csv"
+						}
 					}
 				]
 			}
