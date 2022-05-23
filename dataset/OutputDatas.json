@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"itemName": {
+			"Item": {
 				"type": "string"
 			}
 		},
@@ -15,7 +15,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "Entidad_Pago_20220429175307.parquet",
+				"fileName": {
+					"value": "@dataset().Item",
+					"type": "Expression"
+				},
 				"container": "datas"
 			},
 			"compressionCodec": "snappy"
