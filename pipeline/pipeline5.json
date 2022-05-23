@@ -47,13 +47,19 @@
 				"inputs": [
 					{
 						"referenceName": "OutputDatas",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Item": "Entidad_Pago_20220429175307.parquet"
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "datas",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"assd": "Entidad_Pago_20220429175307.csv"
+						}
 					}
 				]
 			}
