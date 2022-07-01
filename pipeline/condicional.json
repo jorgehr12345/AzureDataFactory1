@@ -110,7 +110,7 @@
 									"referenceName": "OutputDatas",
 									"type": "DatasetReference",
 									"parameters": {
-										"itemName": "Asd.parquet"
+										"Item": "prueba1.parquet"
 									}
 								}
 							]
@@ -179,7 +179,7 @@
 									"referenceName": "OutputDatas",
 									"type": "DatasetReference",
 									"parameters": {
-										"itemName": "Asd.parquet"
+										"Item": "prueba1.parquet"
 									}
 								}
 							]
