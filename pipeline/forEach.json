@@ -62,7 +62,10 @@
 							"inputs": [
 								{
 									"referenceName": "datas",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"assd": "prueba1.csv"
+									}
 								}
 							],
 							"outputs": [
