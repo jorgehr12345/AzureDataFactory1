@@ -166,68 +166,22 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "AzureBlobStorage1",
+					"referenceName": "AzureDataLakeStorage1",
 					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"Nombre": {
-						"type": "string"
-					}
 				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": {
-							"value": "@dataset().Nombre",
-							"type": "Expression"
-						},
-						"container": "inputproyecto"
+						"type": "AzureBlobFSLocation",
+						"fileSystem": "inputairflow"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
-					"firstRowAsHeader": true,
+					"firstRowAsHeader": false,
 					"quoteChar": "\""
 				},
-				"schema": [
-					{
-						"name": "Datetime",
-						"type": "String"
-					},
-					{
-						"name": "Tweet Id",
-						"type": "String"
-					},
-					{
-						"name": "Text",
-						"type": "String"
-					},
-					{
-						"name": "Username",
-						"type": "String"
-					},
-					{
-						"name": "Like Count",
-						"type": "String"
-					},
-					{
-						"name": "RTs Count",
-						"type": "String"
-					},
-					{
-						"name": "URL",
-						"type": "String"
-					},
-					{
-						"name": "Frase",
-						"type": "String"
-					},
-					{
-						"name": "TipoComentario",
-						"type": "String"
-					}
-				]
+				"schema": []
 			},
 			"dependsOn": []
 		},
@@ -329,6 +283,65 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/InputPowerBi')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "NotasTotales.csv",
+						"fileSystem": "postulantes"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Codigo",
+						"type": "String"
+					},
+					{
+						"name": "Nombres",
+						"type": "String"
+					},
+					{
+						"name": "Nota1",
+						"type": "String"
+					},
+					{
+						"name": "Nota2",
+						"type": "String"
+					},
+					{
+						"name": "Nota3",
+						"type": "String"
+					},
+					{
+						"name": "NotaTotal",
+						"type": "String"
+					},
+					{
+						"name": "NotaVigesimal",
+						"type": "String"
+					},
+					{
+						"name": "CarreraIngreso",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/OutputDatas')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -338,7 +351,7 @@
 					"type": "LinkedServiceReference"
 				},
 				"parameters": {
-					"itemName": {
+					"Item": {
 						"type": "string"
 					}
 				},
@@ -348,10 +361,10 @@
 					"location": {
 						"type": "AzureBlobStorageLocation",
 						"fileName": {
-							"value": "@dataset().itemName",
+							"value": "@dataset().Item",
 							"type": "Expression"
 						},
-						"container": "datassalida"
+						"container": "datas"
 					},
 					"compressionCodec": "snappy"
 				},
@@ -1080,12 +1093,20 @@
 					"referenceName": "AzureBlobStorage1",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"assd": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "original.csv",
+						"fileName": {
+							"value": "@dataset().assd",
+							"type": "Expression"
+						},
 						"container": "datas"
 					},
 					"columnDelimiter": ",",
@@ -1105,13 +1126,21 @@
 					"referenceName": "AzureBlobStorage2",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"asd": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "copia10",
-						"container": "datassalida"
+						"fileName": {
+							"value": "@dataset().asd",
+							"type": "Expression"
+						},
+						"container": "datas"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -1430,6 +1459,31 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/D_Proyecto')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileSystem": "outputairflow"
+					},
+					"columnDelimiter": ";",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Copiar1')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -1520,287 +1574,6 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/triggerInput')]",
 				"[concat(variables('factoryId'), '/datasets/triggerOutput')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Copiar2')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Copy data1",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "DelimitedTextSink",
-								"storeSettings": {
-									"type": "AzureBlobStorageWriteSettings"
-								},
-								"formatSettings": {
-									"type": "DelimitedTextWriteSettings",
-									"quoteAllText": true,
-									"fileExtension": ".txt"
-								}
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "prueba2input",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "prueba2output",
-								"type": "DatasetReference",
-								"parameters": {
-									"Asd": {
-										"value": "@utcnow()",
-										"type": "Expression"
-									}
-								}
-							}
-						]
-					},
-					{
-						"name": "Wait1",
-						"type": "Wait",
-						"dependsOn": [
-							{
-								"activity": "Copy data1",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"waitTimeInSeconds": 20
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
-				"annotations": [],
-				"lastPublishTime": "2021-01-14T16:58:12Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/prueba2input')]",
-				"[concat(variables('factoryId'), '/datasets/prueba2output')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CopiarComentarios')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Copy data1",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink"
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "Text",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "Comentario",
-											"type": "String",
-											"physicalType": "varchar"
-										}
-									},
-									{
-										"source": {
-											"name": "Datetime",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "Fecha",
-											"type": "DateTime",
-											"physicalType": "datetime2"
-										}
-									},
-									{
-										"source": {
-											"name": "Username",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "NombreCompleto",
-											"type": "String",
-											"physicalType": "varchar"
-										}
-									},
-									{
-										"source": {
-											"name": "Tweet Id",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "Indice",
-											"type": "String",
-											"physicalType": "varchar"
-										}
-									},
-									{
-										"source": {
-											"name": "TipoComentario",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "TipoComentario",
-											"type": "String",
-											"physicalType": "varchar"
-										}
-									},
-									{
-										"source": {
-											"name": "URL",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "Fuente",
-											"type": "String",
-											"physicalType": "varchar"
-										}
-									},
-									{
-										"source": {
-											"name": "Like Count",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CantidadMeGusta",
-											"type": "Int32",
-											"physicalType": "int"
-										}
-									},
-									{
-										"source": {
-											"name": "RTs Count",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CantidadRetweets",
-											"type": "Int32",
-											"physicalType": "int"
-										}
-									},
-									{
-										"source": {
-											"name": "Frase",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "Frase",
-											"type": "String",
-											"physicalType": "varchar"
-										}
-									}
-								],
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "F_Proyecto",
-								"type": "DatasetReference",
-								"parameters": {
-									"Nombre": "DataAlianza4.csv"
-								}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "D_ProyectoComentario",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/F_Proyecto')]"
 			]
 		}
 	]

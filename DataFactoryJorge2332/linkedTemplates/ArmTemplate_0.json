@@ -300,22 +300,51 @@
 				"type": "AzureSqlTable",
 				"schema": [
 					{
-						"name": "nombres",
+						"name": "Codigo",
 						"type": "varchar"
 					},
 					{
-						"name": "apellidos",
+						"name": "Nombres",
 						"type": "varchar"
 					},
 					{
-						"name": "edad",
-						"type": "int",
-						"precision": 10
+						"name": "Nota1",
+						"type": "decimal",
+						"precision": 8,
+						"scale": 3
+					},
+					{
+						"name": "Nota2",
+						"type": "decimal",
+						"precision": 8,
+						"scale": 3
+					},
+					{
+						"name": "Nota3",
+						"type": "decimal",
+						"precision": 8,
+						"scale": 3
+					},
+					{
+						"name": "NotaTotal",
+						"type": "decimal",
+						"precision": 8,
+						"scale": 3
+					},
+					{
+						"name": "NotaVigesimal",
+						"type": "decimal",
+						"precision": 8,
+						"scale": 3
+					},
+					{
+						"name": "CarreraIngreso",
+						"type": "varchar"
 					}
 				],
 				"typeProperties": {
 					"schema": "dbo",
-					"table": "prueba1"
+					"table": "pruebaService2"
 				}
 			},
 			"dependsOn": [
