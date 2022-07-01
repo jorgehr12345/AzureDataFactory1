@@ -59,7 +59,7 @@
 						"referenceName": "OutputDatas",
 						"type": "DatasetReference",
 						"parameters": {
-							"itemName": "Personas.parquet"
+							"Item": "'prueba1.csv'"
 						}
 					}
 				]
