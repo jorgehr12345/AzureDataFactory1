@@ -22,43 +22,6 @@
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": [
-			{
-				"name": "Datetime",
-				"type": "String"
-			},
-			{
-				"name": "Tweet Id",
-				"type": "String"
-			},
-			{
-				"name": "Text",
-				"type": "String"
-			},
-			{
-				"name": "Username",
-				"type": "String"
-			},
-			{
-				"name": "Like Count",
-				"type": "String"
-			},
-			{
-				"name": "RTs Count",
-				"type": "String"
-			},
-			{
-				"name": "URL",
-				"type": "String"
-			},
-			{
-				"name": "Frase",
-				"type": "String"
-			},
-			{
-				"name": "TipoComentario",
-				"type": "String"
-			}
-		]
+		"schema": []
 	}
 }
