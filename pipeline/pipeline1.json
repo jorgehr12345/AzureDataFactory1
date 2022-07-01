@@ -66,7 +66,7 @@
 						"referenceName": "OutputDatas",
 						"type": "DatasetReference",
 						"parameters": {
-							"itemName": "original.parquet"
+							"Item": "prueba1.parquet"
 						}
 					}
 				]
