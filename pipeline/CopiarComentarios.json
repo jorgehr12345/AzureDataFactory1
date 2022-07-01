@@ -152,10 +152,7 @@
 				"inputs": [
 					{
 						"referenceName": "F_Proyecto",
-						"type": "DatasetReference",
-						"parameters": {
-							"Nombre": "DataAlianza4.csv"
-						}
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
